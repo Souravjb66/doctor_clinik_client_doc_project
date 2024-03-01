@@ -1,0 +1,21 @@
+syntax="proto3";
+option go_package="./";
+
+message Docavailable{
+    bool is_true =1;
+}
+message Serverrespond{
+    string off =1;
+
+}
+message Docinfo{
+    bool is_avail=1;
+}
+message Clientmsg{
+    bool clclose=1;
+}
+service Doctor{
+    rpc DoctorOn(stream Docavailable)returns(Serverrespond);
+    rpc ServerSend(Clientmsg)returns(stream Docinfo);
+    
+}
